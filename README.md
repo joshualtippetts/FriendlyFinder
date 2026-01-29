@@ -59,21 +59,21 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [Word-duh-le](https://wordduhle.click).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - 3 HTML pages.
+- [x] **Proper HTML element usage** - Used all the required tags along with a few more for better structure and description.
+- [x] **Links** - Used links to navigate to each page and also put my Github link in.
+- [x] **Text** - Used h1, p, span, div, and table tags for text options.
+- [x] **3rd party API placeholder** - Quote of the day on the login page.
+- [x] **Images** - My logo/title is an image.
+- [x] **Login placeholder** - Its in the home page.
+- [x] **DB data placeholder** - The actual game would make a call to the database for the word that day.
+- [x] **WebSocket placeholder** - Displays the score of all the people who played that day on the leaderboard. Realtime updating if a friends plays next to you.
 
 ## 🚀 CSS deliverable
 
