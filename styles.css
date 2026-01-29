@@ -29,3 +29,22 @@ html {
     background: lightblue;
 }
 
+#title {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#login-confirm {
+    display: flex;
+    flex-direction: row;
+    align-items: right;
+}
+
+
