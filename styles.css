@@ -1,13 +1,5 @@
-#logo-head {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 header {
     display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 nav {
@@ -47,4 +39,6 @@ form {
     align-items: right;
 }
 
-
+h2 {
+    text-align: center;
+}
