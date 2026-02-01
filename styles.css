@@ -127,3 +127,11 @@ button:hover {
     background-color: #0d6efd;
     color: white;
 }
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    height: 17%;
+}
