@@ -21,7 +21,7 @@ body {
     padding: 60px;
 }
 
-#subtitle {
+.subtitle {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -74,4 +74,37 @@ main {
     background-color: white;
     display: grid;
     place-items: center;
+}
+
+table {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+tr {
+    display: flex;
+}
+
+th, td {
+  border: 1px solid #333;
+  padding: 10px 14px;
+}
+
+.table-placement, .table-tries {
+    flex: 1 1 175px;
+    width: 175px;
+    text-align: center;
+    justify-content: center;
+}
+
+.table-player {
+    flex: 1 1 800px;
+    width: 800px;
+    text-align: start;
+    justify-content: center;
+}
+
+#your-stats{
+    padding-top: 200px;
 }
