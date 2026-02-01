@@ -1,29 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;}
+
 header {
     display: flex;
 }
 
-nav {
-    display: flex;
-    align-self: start;
-}
-
-ul {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.nav-links {
-    padding: 20px;
-}
-
-html {
-    background: lightblue;
+body {
+    background: rgb(173, 216, 230);
 }
 
 #title {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 60px;
 }
 
 form {
@@ -31,14 +26,27 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 25px;
 }
 
 #login-confirm {
-    display: flex;
-    flex-direction: row;
-    align-items: right;
+    padding: 10px;
 }
 
 h2 {
     text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+#quote-body {
+    display: flex;
+    justify-content: center;
+    background: aliceblue;
+    border-radius: 10px;
+    margin: 15px;
 }
