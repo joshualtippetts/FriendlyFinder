@@ -17,14 +17,14 @@ body {
 #title {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
     padding: 60px;
 }
 
 .subtitle {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: center;
     padding: 30px;
 }
 
@@ -34,10 +34,11 @@ form {
     justify-content: center;
     align-items: center;
     padding: 25px;
+    gap: 15px;
 }
 
 #login-confirm {
-    padding: 10px;
+    padding-bottom: 60px;
 }
 
 h2 {
@@ -60,8 +61,8 @@ main {
 
 #table {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 62px);
+    grid-template-rows: repeat(6, 62px);
     gap: 8px;
     width: max-content;
     margin: 40px auto;
@@ -71,6 +72,7 @@ main {
     width: 62px;
     height: 62px;
     border: 3px solid grey;
+    border-radius: 5px;
     background-color: white;
     display: grid;
     place-items: center;
@@ -86,20 +88,27 @@ tr {
     display: flex;
 }
 
-th, td {
-  border: 1px solid #333;
-  padding: 10px 14px;
+th {
+    border: 1px solid #333;
+    padding: 10px 14px;
+    background-color: lightgrey;
+}
+
+td {
+    border: 1px solid #333;
+    padding: 10px 14px;
+    background-color: whitesmoke;
 }
 
 .table-placement, .table-tries {
-    flex: 1 1 175px;
+    flex: 1 1 25%;
     width: 175px;
     text-align: center;
     justify-content: center;
 }
 
 .table-player {
-    flex: 1 1 800px;
+    flex: 1 1 50%;
     width: 800px;
     text-align: start;
     justify-content: center;
@@ -107,4 +116,14 @@ th, td {
 
 #your-stats{
     padding-top: 200px;
+}
+
+button {
+    border-radius: 5px;
+    border: thin solid lightgray;
+}
+
+button:hover {
+    background-color: #0d6efd;
+    color: white;
 }
