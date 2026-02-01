@@ -21,6 +21,13 @@ body {
     padding: 60px;
 }
 
+#subtitle {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -40,7 +47,7 @@ h2 {
 main {
     display: flex;
     flex-direction: column;
-    height: 60%;
+    height: 75%;
 }
 
 #quote-body {
@@ -49,4 +56,22 @@ main {
     background: aliceblue;
     border-radius: 10px;
     margin: 15px;
+}
+
+#table {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 8px;
+    width: max-content;
+    margin: 40px auto;
+}
+
+.cell {
+    width: 62px;
+    height: 62px;
+    border: 3px solid grey;
+    background-color: white;
+    display: grid;
+    place-items: center;
 }
