@@ -10,7 +10,7 @@ header {
     display: flex;
 }
 
-body {
+.body {
     background: rgb(173, 216, 230);
 }
 
