@@ -10,6 +10,12 @@ header {
     display: flex;
 }
 
+.nav-body {
+    display: flex; 
+    flex-direction: row; 
+    padding: 5px;
+}
+
 .body {
     background: rgb(173, 216, 230);
 }

@@ -3,37 +3,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 
 export default function App() {
-  return (
-    <div className="body bg-dark text-light">
-      <header className="container-fluid">
-        <nav className="navbar fixed-top navbar-dark">
-          <div className="navbar-brand">
-            Simon<sup>&reg;</sup>
-          </div>
-          <menu className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-link" href="index.html">
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="play.html">
-                Play
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="scores.html">
-                Scores
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="about.html">
-                About
-              </a>
-            </li>
-          </menu>
-        </nav>
-      </header>
+    return (
+        <div className="body bg-dark text-light">
+            <header>
+                <nav className="nav-body">
+                    <img id="logo-head" src="public/word-duh-le_logo.png" alt="Word-duh-le logo" width="75px"/>
+                    <menu className="nav nav-pills">
+                        <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" href="login.html">
+                                Login
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="play.html">
+                                Play
+                            </a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="leaderboard.html">
+                                Leaderboard
+                            </a>
+                        </li>
+                    </menu>
+                </nav>
+            </header>
 
       <main>App components go here</main>
 
