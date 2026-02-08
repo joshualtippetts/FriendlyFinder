@@ -29,6 +29,7 @@ img {
 
 main {
     display: flex;
+    flex-direction: column;
     flex: 1 calc(100vh - 128px);
 }
 
