@@ -15,7 +15,7 @@ export default function App() {
                         <img id="logo-head" src="public/word-duh-le_logo.png" alt="Word-duh-le logo" width="75px"/>
                         <menu className="nav nav-pills">
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="login">
+                                <NavLink className="nav-link" to="">
                                     Login
                                 </NavLink>
                             </li>
@@ -33,7 +33,12 @@ export default function App() {
                     </nav>
                 </header>
 
-        <main>App components go here</main>
+        <Routes>
+            <Route path='/' element={<Login />} exact />
+            <Route path='/play' element={<Play />} />
+            <Route path='/leaderboard' element={<Leaderboard />} />
+            <Route path='*' element={<NotFound />} />
+        </Routes>
 
         <footer>
             <div className="author">
@@ -46,4 +51,8 @@ export default function App() {
         </div>
     </BrowserRouter>
   );
+}
+
+function NotFound() {
+  return <main>404: Return to sender. Address unknown.</main>;
 }
