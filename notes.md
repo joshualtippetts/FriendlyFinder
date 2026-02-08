@@ -21,9 +21,7 @@ Literally just followed the instructions and it wasn't that hard. Even didn't ha
 
 This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
 
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React. Honestly this was already written but it pretty much follows how I felt 
-
-about the html part
+The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React. Honestly this was already written but it pretty much follows how I felt about the html part
 
 ## CSS
 
