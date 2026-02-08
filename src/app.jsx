@@ -12,7 +12,7 @@ export default function App() {
             <div className="body">
                 <header>
                     <nav className="nav-body">
-                        <img id="logo-head" src="public/word-duh-le_logo.png" alt="Word-duh-le logo"/>
+                        <img id="logo-head" src="./public/word-duh-le_logo.png" alt="Word-duh-le logo"/>
                         <menu className="nav nav-pills">
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="">

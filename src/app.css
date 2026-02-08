@@ -29,7 +29,7 @@ img {
 
 main {
     display: flex;
-    flex: 1 calc(100vh - 132px);
+    flex: 1 calc(100vh - 128px);
 }
 
 .author {
