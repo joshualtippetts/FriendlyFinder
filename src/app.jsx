@@ -15,19 +15,19 @@ export default function App() {
                         <img id="logo-head" src="public/word-duh-le_logo.png" alt="Word-duh-le logo" width="75px"/>
                         <menu className="nav nav-pills">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="login.html">
+                                <NavLink className="nav-link" to="login">
                                     Login
-                                </a>
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="play.html">
+                                <NavLink className="nav-link" to="play">
                                     Play
-                                </a>
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="leaderboard.html">
+                                <NavLink className="nav-link" to="leaderboard">
                                     Leaderboard
-                                </a>
+                                </NavLink>
                             </li>
                         </menu>
                     </nav>
