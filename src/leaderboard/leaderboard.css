@@ -1,0 +1,55 @@
+.subtitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+table {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+tbody {
+    display: flex;
+    flex-direction: column;
+}
+
+thead {
+    display: flex;
+}
+
+tr {
+    display: flex;
+}
+
+th {
+    border: 1px solid #333;
+    padding: 10px 14px;
+    background-color: lightgrey;
+}
+
+td {
+    border: 1px solid #333;
+    padding: 10px 14px;
+    background-color: whitesmoke;
+}
+
+.table-placement, .table-tries {
+    flex: 1 1 25%;
+    width: 175px;
+    text-align: center;
+    justify-content: center;
+}
+
+.table-player {
+    flex: 1 1 50%;
+    width: 800px;
+    text-align: start;
+    justify-content: center;
+}
+
+#your-stats{
+    padding-top: 200px;
+}

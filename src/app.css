@@ -42,24 +42,6 @@ main {
     padding: 60px;
 }
 
-.table-placement, .table-tries {
-    flex: 1 1 25%;
-    width: 175px;
-    text-align: center;
-    justify-content: center;
-}
-
-.table-player {
-    flex: 1 1 50%;
-    width: 800px;
-    text-align: start;
-    justify-content: center;
-}
-
-#your-stats{
-    padding-top: 200px;
-}
-
 footer {
     display: flex;
     flex: 0 30px;
