@@ -1,6 +1,6 @@
 # CS 260 Notes
 
-[My startup - Simon](https://simon.cs260.click)
+[My startup](https://startup.wordduhle.click)
 
 ## Helpful links
 
@@ -10,67 +10,57 @@
 
 ## AWS
 
-My IP address is: 54.81.96.130
-Launching my AMI I initially put it on a private subnet. Even though it had a public IP address and the security group was right, I wasn't able to connect to it.
+My IP address is: 35.173.23.85 (It's my Elastic IP address)
+I did it right the first time but still ended up having to create a whole new server because I ended up installing stuff wrong later on.
 
 ## Caddy
 
-No problems worked just like it said in the [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
+Literally just followed the instructions and it wasn't that hard. Even didn't have to switch it because of my elastic IP address. [instruction](https://github.com/webprogramming260/.github/blob/main/profile/webServers/https/https.md).
 
 ## HTML
 
 This was easy. I was careful to use the correct structural elements such as header, footer, main, nav, and form. The links between the three views work great using the `a` element.
 
-The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React.
+The part I didn't like was the duplication of the header and footer code. This is messy, but it will get cleaned up when I get to React. Honestly this was already written but it pretty much follows how I felt 
+
+about the html part
 
 ## CSS
 
-This took a couple hours to get it how I wanted. It was important to make it responsive and Bootstrap helped with that. It looks great on all kinds of screen sizes.
-
-Bootstrap seems a bit like magic. It styles things nicely, but is very opinionated. You either do, or you do not. There doesn't seem to be much in between.
-
-I did like the navbar it made it super easy to build a responsive header.
+Honestly this was the hardest thing so far because of all the flex and grid formatting. I also didn't help myself by picking wordle which is really hard to format correctly grid-wise while making it look good. I ended up using pretty basic stuff for the login but my Bootstrap buttons look pretty cool in my navbar.
 
 ```html
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand">
-            <img src="logo.svg" width="30" height="30" class="d-inline-block align-top" alt="" />
-            Calmer
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" href="play.html">Play</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Logout</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+      <nav className="nav-body">
+            <img id="logo-head" src="/word-duh-le_logo.png" alt="Word-duh-le logo"/>
+            <menu className="nav nav-pills">
+                <li className="nav-item">
+                        <NavLink className="nav-link" to="">
+                              Login
+                          </NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="play">
+                        Play
+                    </NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="leaderboard">
+                        Leaderboard
+                    </NavLink>
+                </li>
+            </menu>
+        </nav>
 ```
 
-I also used SVG to make the icon and logo for the app. This turned out to be a piece of cake.
+If I'm being honest I had AI make me some images and I just editted them to what I wanted them to be. Then I just inserted them as a little logo in the top left corner.
 
 ```html
-<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
-  <rect width="100" height="100" fill="#0066aa" rx="10" ry="10" />
-  <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="72" font-family="Arial" fill="white">C</text>
-</svg>
+<img id="logo-head" src="/word-duh-le_logo.png" alt="Word-duh-le logo"/>
 ```
 
 ## React Part 1: Routing
 
-Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS. This isn't as straight forward as you would find with Svelte or Vue, but I made it work in the end. If there was a ton of CSS it would be a real problem. It sure was nice to have the code structured in a more usable way.
+Setting up Vite and React was pretty simple. I had a bit of trouble because of conflicting CSS and so I had to change some of my CSS. I also ended up tweeking some of my CSS because it looked a little different than I wanted after all the switching to React components instead of html pages. The assignment wasn't incredibly hard because of the walkthrough we did in class but it still took some time to personalize all the final touches. 
 
 ## React Part 2: Reactivity
 
