@@ -49,19 +49,6 @@ main {
     padding: 30px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
-    gap: 15px;
-}
-
-#login-confirm {
-    padding-bottom: 60px;
-}
-
 h2 {
     text-align: center;
 }
@@ -70,14 +57,6 @@ main {
     display: flex;
     flex-direction: column;
     height: 75%;
-}
-
-#quote-body {
-    display: flex;
-    justify-content: center;
-    background: aliceblue;
-    border-radius: 10px;
-    margin: 15px;
 }
 
 #table {
@@ -137,16 +116,6 @@ td {
 
 #your-stats{
     padding-top: 200px;
-}
-
-button {
-    border-radius: 5px;
-    border: thin solid lightgray;
-}
-
-button:hover {
-    background-color: #0d6efd;
-    color: white;
 }
 
 footer {
