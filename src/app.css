@@ -11,10 +11,13 @@ header {
     flex: 0 80px;
 }
 
+img {
+    width: 125px;
+}
+
 .nav-body {
     display: flex; 
     flex-direction: row; 
-    padding: 5px;
 }
 
 .body {
@@ -26,7 +29,7 @@ header {
 
 main {
     display: flex;
-    flex: 1 calc(100vh - 128px);
+    flex: 1 calc(100vh - 132px);
 }
 
 .author {
