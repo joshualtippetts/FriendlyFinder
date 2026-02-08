@@ -20,6 +20,12 @@ header {
     background: rgb(173, 216, 230);
 }
 
+.author {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
 #title {
     display: flex;
     flex-direction: column;

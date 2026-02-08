@@ -4,7 +4,7 @@ import './app.css';
 
 export default function App() {
     return (
-        <div className="body bg-dark text-light">
+        <div className="body">
             <header>
                 <nav className="nav-body">
                     <img id="logo-head" src="public/word-duh-le_logo.png" alt="Word-duh-le logo" width="75px"/>
@@ -30,11 +30,11 @@ export default function App() {
 
       <main>App components go here</main>
 
-      <footer className="bg-dark text-white-50">
-        <div className="container-fluid">
-          <span className="text-reset">Author Name(s)</span>
-          <a className="text-reset" href="https://github.com/webprogramming260/simon-react">
-            Source
+      <footer>
+        <div className="author">
+          <span>Joshua Tippetts</span>
+          <a className="repo" href="https://github.com/joshualtippetts/Word-duh-le">
+            Github
           </a>
         </div>
       </footer>
