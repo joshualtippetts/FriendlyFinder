@@ -9,12 +9,13 @@ h2 {
     text-align: center;
 }
 
-#table {
+.board {
     display: grid;
     grid-template-rows: repeat(6, 62px);
     gap: 8px;
     width: max-content;
     margin: 40px auto;
+    font-size: 40px;
 }
 
 .rows {
@@ -31,4 +32,16 @@ h2 {
     background-color: white;
     display: grid;
     place-items: center;
+}
+
+.green {
+    background: #6aaa64; 
+}
+
+.yellow { 
+    background: #c9b458; 
+}
+
+.gray { 
+    background: #787c7e; 
 }
