@@ -13,7 +13,7 @@ export default function App() {
     const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
 
-    
+
     return (
         <BrowserRouter>
             <div className="body">
@@ -26,16 +26,20 @@ export default function App() {
                                     Login
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="play">
-                                    Play
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="leaderboard">
-                                    Leaderboard
-                                </NavLink>
-                            </li>
+                            {authState === AuthState.Authenticated && (
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="play">
+                                        Play
+                                    </NavLink>
+                                </li>
+                            )}
+                            {authState === AuthState.Authenticated && (
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to="leaderboard">
+                                        Leaderboard
+                                    </NavLink>
+                                </li>
+                            )}
                         </menu>
                     </nav>
                 </header>

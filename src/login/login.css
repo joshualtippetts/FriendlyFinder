@@ -1,15 +1,26 @@
 
-form {
+.login-messege {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#auth-messege {
+    margin-top: 5%;
+}
+
+.form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 25px;
-    gap: 15px;
+    padding: 10px;
+    gap: 5px;
 }
 
-#name-label {
-    padding: 1px;
+.input-group {
+    display: flex;
+    flex-direction: row;
+    width: auto;
 }
 
 #password-label {
@@ -20,20 +31,23 @@ form {
     padding-bottom: 60px;
 }
 
-button {
-    border-radius: 5px;
-    border: thin solid lightgray;
+.buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
 }
 
-button:hover {
-    background-color: #0d6efd;
-    color: white;
+#auth-buttons {
+    margin-top: 3%;
 }
 
 #quote-body {
     display: flex;
+    align-self: center;
     justify-content: center;
     background: aliceblue;
     border-radius: 10px;
-    margin: 15px;
+    margin-top: 7%;
+    max-width: 80%;
+    min-width: 40%;
 }
