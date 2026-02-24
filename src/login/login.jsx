@@ -6,6 +6,14 @@ import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
 
 export function Login({ userName, authState, onAuthChange }) {
+  const [quote, setQuote] = React.useState('Loading...');
+  const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
+
+    React.useEffect(() => {
+      setQuote('Quit, don\'t quit. Noodles, don\'t noodles.');
+      setQuoteAuthor('Oogway');
+    }, []);
+
   return (
     <main>
       <div id="title">
@@ -26,7 +34,7 @@ export function Login({ userName, authState, onAuthChange }) {
       </div>
 
       <div id="quote-body">
-        <h5>Quote of the day: <span id="quote">"Quit, don't quit. Noodles, don't noodles."</span></h5>
+        <span id='quote'>"{quote}" - <b>{quoteAuthor}</b></span>
       </div>
     </main>
   );

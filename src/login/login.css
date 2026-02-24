@@ -50,4 +50,7 @@
     margin-top: 7%;
     max-width: 80%;
     min-width: 40%;
+    font-size: 1.25em;
+    text-align: center;
+    padding: 5px;
 }
