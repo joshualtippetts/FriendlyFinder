@@ -90,9 +90,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [x] **Bundled using Vite** - Used Vite during the creation process to view the website and then used vite to build and download to my server.
+- [x] **Components** - Turned all my html pages into components and injected them into the main file. Also compartmentalized unto src and public folders. Each folder inside the src folder has both a jsx and css file for that given component.
+- [x] **Router** - Used BrowserRouter, Routes, and Route (even NavLinks too) to inject html/js/jsx into my app.jsx file which was called by my index.jsx file which altered my index.html file. Basically made it so it switched the main tag on the main page to match whichever "page" they selected from the navbar.
 
 ## 🚀 React part 2: Reactivity deliverable
 
