@@ -16,6 +16,7 @@ export function Play(props) {
   const [complete, setComplete] = useState(false);
   const [loading, setLoading] = useState(true);
   const [answerFormat, setAnswerFormat] = useState("subtitle");
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     fetch("/public/words.txt")
@@ -64,6 +65,7 @@ export function Play(props) {
       if (isCorrect || newGuesses.length === MAX_GUESSES) {
         setComplete(true);
         setAnswerFormat("changed-subtitle")
+        setScore(guesses.length);
       }
       return newGuesses;
     });
