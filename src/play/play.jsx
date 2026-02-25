@@ -12,14 +12,15 @@ export function Play(props) {
   const [answer, setAnswer] = useState("CRANE");
   const [guesses, setGuesses] = useState([]);
   const [currentGuess, setCurrentGuess] = useState("");
+  const [complete, setComplete] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Enter") {
         submitGuess();
-      } else if (e.key === "Backspace") {
+      } else if (!complete && e.key === "Backspace") {
         setCurrentGuess((prev) => prev.slice(0, -1));
-      } else if (/^[a-zA-Z]$/.test(e.key)) {
+      } else if (!complete && /^[a-zA-Z]$/.test(e.key)) {
         if (currentGuess.length < WORD_LENGTH) {
           setCurrentGuess((prev) => prev + e.key.toUpperCase());
         }
@@ -33,7 +34,7 @@ export function Play(props) {
   function submitGuess() {
     if (currentGuess.length !== WORD_LENGTH) return;
 
-    const result = evaluateGuess(currentGuess, answer);
+    const result = evaluateGuess(currentGuess, answer, setComplete);
 
     setGuesses((prev) => [...prev, { word: currentGuess, result }]);
     setCurrentGuess("");
