@@ -1,18 +1,11 @@
 import React from 'react';
 import './leaderboard.css';
 
-export const [scores, setScores] = React.useState([
-    { id: 1, player: "Joshua", score: 120 },
-    { id: 2, player: "Alex", score: 110 },
-    { id: 3, player: "Sam", score: 95 },
-  ]);
 
-export function Leaderboard({ entries }) {
-
-  const sortedScores = [...scores].sort(
-    (a, b) => b.score - a.score
-  );
-
+export function Leaderboard({ scores, recentScore }) {
+  const topScores = [...scores]
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
 
   return (
     <table className="leaderboard">
@@ -25,17 +18,94 @@ export function Leaderboard({ entries }) {
       </thead>
 
       <tbody>
-        {entries.map((entry, index) => (
-          <tr key={entry.id}>
-            <td>{index + 1}</td>
-            <td>{entry.player}</td>
-            <td>{entry.score}</td>
+        {topScores.length ? (
+          topScores.map((score, i) => (
+            <tr key={score.id ?? `${score.player}-${i}`}>
+              <td>{i + 1}</td>
+              <td>{score.player}</td>
+              <td>{score.score}</td>
+            </tr>
+          ))
+        ) : (
+          <tr key="no-scores">
+            <td colSpan="3">Be the first to score</td>
           </tr>
-        ))}
+        )}
+      </tbody>
+
+      <tbody id="your-stats">
+        {recentScore ? (
+          <tr key="recent">
+            <td>Recent</td>
+            <td>{recentScore.player}</td>
+            <td>{recentScore.score}</td>
+          </tr>
+        ) : (
+          <tr key="no-recent">
+            <td colSpan="3">Play first to show a score!</td>
+          </tr>
+        )}
       </tbody>
     </table>
   );
 }
+
+// export function Leaderboard({ scores, recentScore }) {
+
+//   const scoreRows = [];
+//   if (scores.length) {
+//     for (const [i, score] of [...scores].sort((a, b) => b.score - a.score).slice(0, 5).entries()) {
+//       scoreRows.push(
+//         <tr key={score.id}>
+//           <td>{i + 1}</td>
+//           <td>{score.player}</td>
+//           <td>{score.score}</td>
+//         </tr>
+//       );
+//     }
+//   } else {
+//     scoreRows.push(
+//       <tr key='0'>
+//         <td colSpan='3'>Be the first to score</td>
+//       </tr>
+//     );
+//   }
+
+
+//   if (recentScore) {
+//     scoreRows.push(
+//       <tr key='current' id="your-stats">
+//         <td>Recent</td>
+//         <td>{recentScore.player}</td>
+//           <td>{recentScore.score}</td>
+//         </tr>
+//     );
+//   } else {
+//     scoreRows.push(
+//       <tr id='your-stats' key='current'>
+//         <td colSpan='3'>Play first to show a score!</td>
+//       </tr>
+//     );
+//   }
+
+
+//   return (
+//     <table className="leaderboard">
+//       <thead>
+//         <tr>
+//           <th>Rank</th>
+//           <th>Player</th>
+//           <th>Score</th>
+//         </tr>
+//       </thead>
+
+//       <tbody>
+//         {scoreRows}
+        
+//       </tbody>
+//     </table>
+//   );
+// }
 
 
 

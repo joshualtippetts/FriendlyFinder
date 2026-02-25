@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
@@ -12,6 +13,19 @@ export default function App() {
   const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
   const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
   const [authState, setAuthState] = React.useState(currentAuthState);
+  const [scores, setScores] = React.useState([
+      { player: "Joshua", score: 2 },
+      { player: "Alex", score: 3 },
+      { player: "Sam", score: 4 },
+    ]);
+  const [recentScore, setRecentScore] = React.useState(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("scores");
+    if (stored) {
+        setScores(JSON.parse(stored));
+    }
+    }, []);
 
 
   return (
@@ -59,8 +73,8 @@ export default function App() {
             }
               exact
           />
-          <Route path='/play' element={<Play userName={userName} />} />
-          <Route path='/leaderboard' element={<Leaderboard />} />
+          <Route path='/play' element={<Play userName={userName} setScores={setScores} scores={scores} setRecentScore={setRecentScore} />} />
+          <Route path='/leaderboard' element={<Leaderboard scores={scores} recentScore={recentScore} />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
 

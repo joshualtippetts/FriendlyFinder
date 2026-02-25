@@ -9,7 +9,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;;
+    gap: 10px;
+}
+
+.answer {
+  outline: 2px solid red;
 }
 
 h2 {

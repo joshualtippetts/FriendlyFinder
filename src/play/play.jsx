@@ -2,13 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Board from "./board";
 import { evaluateGuess } from "./evaluateGuess";
-import { setScores } from '../leaderboard/leaderboard';
 import './play.css';
 
 export const WORD_LENGTH = 5;
 export const MAX_GUESSES = 6;
 
-export function Play({ userName, setScores }) {
+export function Play({ userName, setScores, scores, setRecentScore }) {
 
   const [answer, setAnswer] = useState("BASIC");
   const [guesses, setGuesses] = useState([]);
@@ -48,6 +47,10 @@ export function Play({ userName, setScores }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentGuess, loading]);
 
+  useEffect(() => {
+      localStorage.setItem("scores", JSON.stringify(scores));
+  }, [scores]);
+
   function getRandomWord(words) {
     const index = Math.floor(Math.random() * words.length);
     return words[index];
@@ -64,16 +67,36 @@ export function Play({ userName, setScores }) {
       if (isCorrect || newGuesses.length === MAX_GUESSES) {
         setComplete(true);
         setAnswerFormat("changed-subtitle")
-        setScores((prevScores) => {
-          const newScore = {player: userName, score: guesses.length };
-          const updatedScores = [...prevScores, newScore];
-          localStorage.setItem('scores', JSON.stringify(updatedScores));
-          return updatedScores;
-        });
+        addScore(newGuesses.length);
       }
       return newGuesses;
     });
     setCurrentGuess("");
+  }
+
+  function addScore(guessCount) {
+    setScores(prevScores => {
+      const existing = prevScores.find(s => s.player === userName);
+
+      if (existing) {
+        return prevScores.map(s =>
+          s.player === userName
+            ? { ...s, score: Math.min(s.score, guessCount) }
+            : s
+        );
+      }
+
+      return [
+        ...prevScores,
+        {
+          player: userName,
+          score: guessCount
+        }
+      ];
+    });
+    
+
+    setRecentScore({player: userName, score: guesses.length + 1});
   }
 
   return (
