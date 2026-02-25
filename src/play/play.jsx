@@ -2,21 +2,20 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Board from "./board";
 import { evaluateGuess } from "./evaluateGuess";
+import { setScores } from '../leaderboard/leaderboard';
 import './play.css';
 
 export const WORD_LENGTH = 5;
 export const MAX_GUESSES = 6;
 
-export function Play(props) {
+export function Play({ userName, setScores }) {
 
-  const userName = props.userName;
   const [answer, setAnswer] = useState("BASIC");
   const [guesses, setGuesses] = useState([]);
   const [currentGuess, setCurrentGuess] = useState("");
   const [complete, setComplete] = useState(false);
   const [loading, setLoading] = useState(true);
   const [answerFormat, setAnswerFormat] = useState("subtitle");
-  const [score, setScore] = useState(0);
 
   useEffect(() => {
     fetch("/public/words.txt")
@@ -65,7 +64,12 @@ export function Play(props) {
       if (isCorrect || newGuesses.length === MAX_GUESSES) {
         setComplete(true);
         setAnswerFormat("changed-subtitle")
-        setScore(guesses.length);
+        setScores((prevScores) => {
+          const newScore = {player: userName, score: guesses.length };
+          const updatedScores = [...prevScores, newScore];
+          localStorage.setItem('scores', JSON.stringify(updatedScores));
+          return updatedScores;
+        });
       }
       return newGuesses;
     });

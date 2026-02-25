@@ -18,6 +18,7 @@ tbody {
 
 thead {
     display: flex;
+    max-width: max-content;
 }
 
 tr {
@@ -28,6 +29,7 @@ th {
     border: 1px solid #333;
     padding: 10px 14px;
     background-color: lightgrey;
+    max-width: fit-content;
 }
 
 td {
@@ -36,7 +38,7 @@ td {
     background-color: whitesmoke;
 }
 
-.table-placement, .table-tries {
+.table-placement, .table-score {
     flex: 1 1 25%;
     width: 175px;
     text-align: center;
