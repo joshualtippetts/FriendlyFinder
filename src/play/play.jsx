@@ -8,14 +8,32 @@ export const WORD_LENGTH = 5;
 export const MAX_GUESSES = 6;
 
 export function Play(props) {
-  const userName= props.userName;
-  const [answer, setAnswer] = useState("CRANE");
+
+  const userName = props.userName;
+  const [answer, setAnswer] = useState("BASIC");
   const [guesses, setGuesses] = useState([]);
   const [currentGuess, setCurrentGuess] = useState("");
   const [complete, setComplete] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [answerFormat, setAnswerFormat] = useState("subtitle");
+
+  useEffect(() => {
+    fetch("/public/words.txt")
+      .then(res => res.text())
+      .then(text => {
+        const words = text
+          .split("\n")
+          .map(w => w.trim())
+          .filter(Boolean);
+        setAnswer(getRandomWord(words));
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
+      if (loading) return;
       if (e.key === "Enter") {
         submitGuess();
       } else if (!complete && e.key === "Backspace") {
@@ -26,28 +44,49 @@ export function Play(props) {
         }
       }
     };
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [currentGuess]);
+  }, [currentGuess, loading]);
+
+  function getRandomWord(words) {
+    const index = Math.floor(Math.random() * words.length);
+    return words[index];
+  }
 
   function submitGuess() {
     if (currentGuess.length !== WORD_LENGTH) return;
 
-    const result = evaluateGuess(currentGuess, answer, setComplete);
+    const result = evaluateGuess(currentGuess, answer);
+    const isCorrect = currentGuess.toUpperCase() === answer.toUpperCase();
 
-    setGuesses((prev) => [...prev, { word: currentGuess, result }]);
+    setGuesses((prev) => {
+      const newGuesses = [...prev, { word: currentGuess, result }];
+      if (isCorrect || newGuesses.length === MAX_GUESSES) {
+        setComplete(true);
+        setAnswerFormat("changed-subtitle")
+      }
+      return newGuesses;
+    });
     setCurrentGuess("");
   }
 
   return (
     <main>
       <section>
-        <h3 className="subtitle">Player Profile: <span>{userName}</span></h3> 
+        <div className={`${answerFormat}`}>
+          <h3>Player Profile: <span>{userName}</span></h3> 
+          {complete && (
+                  <h4 className="answer">
+                      The answer was: {answer.toUpperCase()}
+                  </h4>
+                  )
+          }
+        </div>
         <div className="game">
           <Board
             guesses={guesses}
             currentGuess={currentGuess}
+            complete={complete}
           />
         </div>
       </section>

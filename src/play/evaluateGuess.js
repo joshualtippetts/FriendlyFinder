@@ -1,6 +1,9 @@
 import { WORD_LENGTH } from "./play";
 
 export function evaluateGuess(guess, answer, setComplete) {
+  guess = guess.toUpperCase();
+  answer = answer.toUpperCase();
+  
   const result = Array(WORD_LENGTH).fill("gray");
   const answerLetters = answer.split("");
 
@@ -16,10 +19,6 @@ export function evaluateGuess(guess, answer, setComplete) {
       result[i] = "yellow";
       answerLetters[answerLetters.indexOf(guess[i])] = null;
     }
-  }
-
-  if (result.every((color) => color === "green")) {
-    setComplete(true);
   }
 
   return result;

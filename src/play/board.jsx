@@ -3,7 +3,7 @@ import Row from "./row";
 import { MAX_GUESSES } from "./play";
 import { WORD_LENGTH } from "./play";
 
-export default function Board({ guesses, currentGuess }) {
+export default function Board({ guesses, currentGuess, complete }) {
   const rows = [];
 
   for (let i = 0; i < MAX_GUESSES; i++) {
