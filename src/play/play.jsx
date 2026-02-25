@@ -6,6 +6,7 @@ import './play.css';
 
 export const WORD_LENGTH = 5;
 export const MAX_GUESSES = 6;
+
 export function Play(props) {
   const userName= props.userName;
   const [answer, setAnswer] = useState("CRANE");
@@ -52,56 +53,3 @@ export function Play(props) {
     </main>
   );
 }
-
-//   return (
-//     <main>
-//       <section>
-//         <div id="table">
-//           <div className='rows' id='row1'>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//           </div>
-//           <div className='rows' id='row2'>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//           </div>
-//           <div className='rows' id='row3'>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//           </div>
-//           <div className='rows' id='row4'>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//           </div>
-//           <div className='rows' id='row5'>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//             <div className="cell"></div>
-//           </div>
-//           <div className='rows' id='row6'>
-//           <div className="cell"></div>
-//           <div className="cell"></div>
-//           <div className="cell"></div>
-//           <div className="cell"></div>
-//           <div className="cell"></div>
-//           </div>
-//         </div>
-//       </section>
-//     </main>
-//   );
-// }
