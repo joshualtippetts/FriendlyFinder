@@ -6,14 +6,18 @@ import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
 
 export function Login({ userName, authState, onAuthChange }) {
+
+    /*------------------ Variables --------------------*/
   const [quote, setQuote] = React.useState('Loading...');
   const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
 
+  /*----------------- Functions -------------------*/
     React.useEffect(() => {
       setQuote('Quit, don\'t quit. Noodles, don\'t noodles.');
       setQuoteAuthor('Oogway');
     }, []);
 
+    /*--------- Return the login view ---------*/
   return (
     <main>
       <div id="title">
@@ -31,7 +35,7 @@ export function Login({ userName, authState, onAuthChange }) {
           userName={userName}
           onLogin={(loginUserName) => {
           onAuthChange(loginUserName, AuthState.Authenticated);
-          
+
           }}
         />
         )}

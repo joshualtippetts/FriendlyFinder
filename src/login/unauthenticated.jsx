@@ -4,10 +4,13 @@ import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 
 export function Unauthenticated(props) {
+
+  /*------------------ Variables --------------------*/
   const [userName, setUserName] = React.useState(props.userName);
   const [password, setPassword] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
 
+  /*----------------- Functions -------------------*/
   async function loginUser() {
     const userNames = JSON.parse(localStorage.getItem('userNames') || '[]');
     if (userNames.includes(userName)) {
@@ -22,6 +25,7 @@ export function Unauthenticated(props) {
     props.onLogin(userName);
   }
 
+  /*--------- Return the unauthenticated view ---------*/
   return (
     <>
       <h2 className="login-messege">Login to play!</h2>

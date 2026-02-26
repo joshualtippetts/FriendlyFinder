@@ -1,12 +1,15 @@
 import { WORD_LENGTH } from "./play";
 
 export function evaluateGuess(guess, answer, setComplete) {
+
+  /*------------------ Variables --------------------*/
   guess = guess.toUpperCase();
   answer = answer.toUpperCase();
-  
+
   const result = Array(WORD_LENGTH).fill("gray");
   const answerLetters = answer.split("");
 
+  /*----------------- Actual calculations -------------------*/
   for (let i = 0; i < WORD_LENGTH; i++) {
     if (guess[i] === answer[i]) {
       result[i] = "green";
@@ -21,5 +24,6 @@ export function evaluateGuess(guess, answer, setComplete) {
     }
   }
 
+  /*--------- Return the result array ---------*/
   return result;
 }

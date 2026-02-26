@@ -9,6 +9,7 @@ export const MAX_GUESSES = 6;
 
 export function Play({ userName, setScores, scores, setRecentScore }) {
 
+  /*------------------ Variables --------------------*/
   const [answer, setAnswer] = useState("BASIC");
   const [guesses, setGuesses] = useState([]);
   const [currentGuess, setCurrentGuess] = useState("");
@@ -16,6 +17,7 @@ export function Play({ userName, setScores, scores, setRecentScore }) {
   const [loading, setLoading] = useState(true);
   const [answerFormat, setAnswerFormat] = useState("subtitle");
 
+  /*----------------- Functions & Mechanics -------------------*/
   useEffect(() => {
     fetch("/public/words.txt")
       .then(res => res.text())
@@ -99,6 +101,7 @@ export function Play({ userName, setScores, scores, setRecentScore }) {
     setRecentScore({player: userName, score: guesses.length + 1});
   }
 
+  /*--------- Return the play view ---------*/
   return (
     <main>
       <section>

@@ -4,8 +4,10 @@ import { MAX_GUESSES } from "./play";
 import { WORD_LENGTH } from "./play";
 
 export default function Board({ guesses, currentGuess, complete }) {
+    /*------------------ Variables --------------------*/
   const rows = [];
 
+  /*----------------- Functions (pretty much although it's just creating the board) -------------------*/
   for (let i = 0; i < MAX_GUESSES; i++) {
     const guess = guesses[i];
 
@@ -24,5 +26,6 @@ export default function Board({ guesses, currentGuess, complete }) {
     }
   }
 
+  /*--------- Return the board ---------*/
   return <div className="board">{rows}</div>;
 }
