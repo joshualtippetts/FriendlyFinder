@@ -33,10 +33,10 @@ export default function App() {
 
   //Simulate other players playing and adding scores to the leaderboard
   setInterval(() => {
-    if(scores.length > 5) return;
+    if(scores.length >= 5) return;
     const score = Math.floor(Math.random() * 6) + 1;
     const userName = 'Oogway';
-    setScores((prev) => [...prev, { player: userName, score }]);;
+    setScores((prev) => [...prev, { player: userName, score: score }]);;
   }, 50000);
 
 

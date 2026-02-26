@@ -77,27 +77,23 @@ export function Play({ userName, setScores, scores, setRecentScore }) {
   }
 
   function addScore(guessCount) {
-    setScores(prevScores => {
-      const existing = prevScores.find(s => s.player === userName);
+    setScores(prev => {
+      const existing = prev.find(s => s.player === userName);
 
+      let next;
       if (existing) {
-        return prevScores.map(s =>
+        next = prev.map(s =>
           s.player === userName
             ? { ...s, score: Math.min(s.score, guessCount) }
             : s
         );
+      } else {
+        next = [...prev, { player: userName, score: guessCount }];
       }
 
-      return [
-        ...prevScores,
-        {
-          player: userName,
-          score: guessCount
-        }
-      ];
+      return next.slice(0, 5);
     });
     
-
     setRecentScore({player: userName, score: guesses.length + 1});
   }
 
