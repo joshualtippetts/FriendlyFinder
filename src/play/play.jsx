@@ -18,6 +18,15 @@ export function Play({ userName, setScores, scores, setRecentScore }) {
   const [answerFormat, setAnswerFormat] = useState("subtitle");
 
   /*----------------- Functions & Mechanics -------------------*/
+
+  //Simulate other players playing and adding scores to the leaderboard
+  setInterval(() => {
+    const score = Math.floor(Math.random() * 6) + 1;
+    const player = 'Oogway';
+    addScore(player, score);
+  }, 50000);
+
+
   useEffect(() => {
     fetch("/words.txt")
       .then(res => res.text())
@@ -69,32 +78,34 @@ export function Play({ userName, setScores, scores, setRecentScore }) {
       if (isCorrect || newGuesses.length === MAX_GUESSES) {
         setComplete(true);
         setAnswerFormat("changed-subtitle")
-        addScore(newGuesses.length);
+        addScore(userName, newGuesses.length);
       }
       return newGuesses;
     });
     setCurrentGuess("");
   }
 
-  function addScore(guessCount) {
+  function addScore(playerName, guessCount) {
     setScores(prev => {
-      const existing = prev.find(s => s.player === userName);
+      const existing = prev.find(s => s.player === playerName);
 
       let next;
       if (existing) {
         next = prev.map(s =>
-          s.player === userName
+          s.player === playerName
             ? { ...s, score: Math.min(s.score, guessCount) }
             : s
         );
       } else {
-        next = [...prev, { player: userName, score: guessCount }];
+        next = [...prev, { player: playerName, score: guessCount }];
       }
 
       return next.slice(0, 5);
     });
-    
-    setRecentScore({player: userName, score: guesses.length + 1});
+
+    if (userName === playerName) {
+      setRecentScore({player: playerName, score: guessCount});
+    }
   }
 
   /*--------- Return the play view ---------*/
