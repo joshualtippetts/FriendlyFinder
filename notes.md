@@ -78,13 +78,3 @@ const [scores, setScores] = React.useState([
     ]);
 const [recentScore, setRecentScore] = React.useState(null);
 ```
-
-
-
-
-
-
-
-# Actual Notes for the Class
-## Intro notes
-I learned how to use the markdown features in GitHub and also learned different skills to help me work more efficiently on my project. 
