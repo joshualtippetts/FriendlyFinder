@@ -62,36 +62,19 @@ Setting up Vite and React was pretty simple. I had a bit of trouble because of c
 
 ## React Part 2: Reactivity
 
-This was a lot of fun to see it all come together. I had to keep remembering to use React state instead of just manipulating the DOM directly.
+I have seen the face of the Almighty. This was... a very large learning experience with an even larger learning curve. In the end I was able to complete it to the best of my ability (using a lot of help of course) and have learn a bunch of things. Moral of the story is that the useState is pretty cool and the fact that useEffect can re-render the page is really nice. I never had a problem with manipulating the DOM directly because my page would break if I tried, so there's that I guess.
 
-Handling the toggling of the checkboxes was particularly interesting.
+Handling the Wordle mechanics along with keeping the webpage instact was definitely a struggle but we did it in the end. We definitely had to make some massive changes and do a lot of style changes but it turned out better in the end.
 
+These are all the React states I had to keep in the global level just so everything could communicate to each other.
 ```jsx
-<div className="input-group sound-button-container">
-  {calmSoundTypes.map((sound, index) => (
-    <div key={index} className="form-check form-switch">
-      <input
-        className="form-check-input"
-        type="checkbox"
-        value={sound}
-        id={sound}
-        onChange={() => togglePlay(sound)}
-        checked={selectedSounds.includes(sound)}
-      ></input>
-      <label className="form-check-label" htmlFor={sound}>
-        {sound}
-      </label>
-    </div>
-  ))}
-</div>
+const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+const [authState, setAuthState] = React.useState(currentAuthState);
+const [scores, setScores] = React.useState([
+      { player: "Joshua", score: 2 },
+      { player: "Alex", score: 3 },
+      { player: "Sam", score: 4 },
+    ]);
+const [recentScore, setRecentScore] = React.useState(null);
 ```
-
-
-
-
-
-
-
-# Actual Notes for the Class
-## Intro notes
-I learned how to use the markdown features in GitHub and also learned different skills to help me work more efficiently on my project. 
