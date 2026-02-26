@@ -98,8 +98,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - All the functionality should be flushed out (like the actual wordle part, the leaderboard, and the login; along with any other side pieces that come with that like the quote, personal score, etc.)
+- [x] **Hooks** - I did indeed use the useState and the useEffect hooks.
 
 ## 🚀 Service deliverable
 
