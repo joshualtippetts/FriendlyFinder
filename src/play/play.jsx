@@ -19,7 +19,7 @@ export function Play({ userName, setScores, scores, setRecentScore }) {
 
   /*----------------- Functions & Mechanics -------------------*/
   useEffect(() => {
-    fetch("/public/words.txt")
+    fetch("/words.txt")
       .then(res => res.text())
       .then(text => {
         const words = text
