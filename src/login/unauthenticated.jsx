@@ -9,8 +9,12 @@ export function Unauthenticated(props) {
   const [displayError, setDisplayError] = React.useState(null);
 
   async function loginUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
+    const userNames = JSON.parse(localStorage.getItem('userNames') || '[]');
+    if (userNames.includes(userName)) {
+      props.onLogin(userName);
+    } else {
+      setDisplayError('User does not exist');
+    }
   }
 
   async function createUser() {

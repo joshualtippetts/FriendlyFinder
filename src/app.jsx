@@ -27,6 +27,12 @@ export default function App() {
     }
     }, []);
 
+    setInterval(() => {
+      const score = Math.floor(Math.random() * 6) + 1;
+      const userName = 'Oogway';
+      setScores((prev) => [...prev, { player: userName, score }]);;
+    }, 50000);
+
 
   return (
     <BrowserRouter>

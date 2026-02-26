@@ -1,3 +1,7 @@
+main {
+    height: 100%;
+}
+
 .subtitle {
     display: flex;
     flex-direction: column;
@@ -16,20 +20,16 @@ tbody {
     flex-direction: column;
 }
 
-thead {
-    display: flex;
-    max-width: max-content;
-}
-
 tr {
     display: flex;
 }
 
 th {
+    display: flex;
     border: 1px solid #333;
     padding: 10px 14px;
     background-color: lightgrey;
-    max-width: fit-content;
+    max-width: 90%;
 }
 
 td {
@@ -38,9 +38,8 @@ td {
     background-color: whitesmoke;
 }
 
-.table-placement, .table-score {
+.table-placement, .table-tries {
     flex: 1 1 25%;
-    width: 175px;
     text-align: center;
     justify-content: center;
 }
@@ -49,6 +48,12 @@ td {
     flex: 1 1 50%;
     width: 800px;
     text-align: start;
+    justify-content: center;
+}
+
+.table-no-scores {
+    flex: 1 1 100%;
+    text-align: center;
     justify-content: center;
 }
 
