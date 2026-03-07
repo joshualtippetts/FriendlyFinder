@@ -93,23 +93,31 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-// updateScores considers a new score for inclusion in the high scores.
+// updateScores considers a new score for inclusion in the high scores and updates if same players get better daily scores.
 function updateScores(newScore) {
-  let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
+
+  // Remove worse score from same player
+  scores = scores.filter(
+    (s) => !(s.player === newScore.player && s.score > newScore.score)
+  );
+
+  // Insert in sorted position
+  let inserted = false;
+
+  for (let i = 0; i < scores.length; i++) {
+    if (newScore.score < scores[i].score) {
       scores.splice(i, 0, newScore);
-      found = true;
+      inserted = true;
       break;
     }
   }
 
-  if (!found) {
+  if (!inserted) {
     scores.push(newScore);
   }
 
-  if (scores.length > 10) {
-    scores.length = 10;
+  if (scores.length > 5) {
+    scores.length = 5;
   }
 
   return scores;
@@ -143,6 +151,28 @@ function setAuthCookie(res, authToken) {
     sameSite: 'strict',
   });
 }
+
+function scheduleMidnightReset() {
+  const now = new Date();
+
+  const midnight = new Date();
+  midnight.setHours(24, 0, 0, 0); // next midnight
+
+  const timeUntilMidnight = midnight - now;
+
+  setTimeout(() => {
+    scores = [];
+    console.log("Scores reset at midnight");
+
+    // After the first reset, repeat every 24 hours
+    setInterval(() => {
+      scores = [];
+      console.log("Scores reset at midnight");
+    }, 1000 * 60 * 60 * 24);
+
+  }, timeUntilMidnight);
+}
+scheduleMidnightReset();
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

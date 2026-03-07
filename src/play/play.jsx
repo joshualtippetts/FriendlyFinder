@@ -7,7 +7,7 @@ import './play.css';
 export const WORD_LENGTH = 5;
 export const MAX_GUESSES = 6;
 
-export function Play({ userName, setScores, scores, setRecentScore }) {
+export function Play({ userName, setRecentScore }) {
 
   /*------------------ Variables --------------------*/
   const [answer, setAnswer] = useState("BASIC");
@@ -20,11 +20,15 @@ export function Play({ userName, setScores, scores, setRecentScore }) {
   /*----------------- Functions & Mechanics -------------------*/
 
   //Simulate other players playing and adding scores to the leaderboard
-  setInterval(() => {
-    const score = Math.floor(Math.random() * 6) + 1;
-    const player = 'Oogway';
-    addScore(player, score);
-  }, 50000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const score = Math.floor(Math.random() * 6) + 1;
+      const player = 'Oogway';
+      addScore(player, score);
+    }, 500000);
+
+    return () => clearInterval(interval);
+  }, []);
 
 
   useEffect(() => {
@@ -58,10 +62,6 @@ export function Play({ userName, setScores, scores, setRecentScore }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentGuess, loading]);
 
-  useEffect(() => {
-      localStorage.setItem("scores", JSON.stringify(scores));
-  }, [scores]);
-
   function getRandomWord(words) {
     const index = Math.floor(Math.random() * words.length);
     return words[index];
@@ -85,25 +85,16 @@ export function Play({ userName, setScores, scores, setRecentScore }) {
     setCurrentGuess("");
   }
 
-  function addScore(playerName, guessCount) {
-    setScores(prev => {
-      const existing = prev.find(s => s.player === playerName);
+  async function addScore( playerName, guessCount) {
+    const newScore = { player: playerName, score: guessCount };
 
-      let next;
-      if (existing) {
-        next = prev.map(s =>
-          s.player === playerName
-            ? { ...s, score: Math.min(s.score, guessCount) }
-            : s
-        );
-      } else {
-        next = [...prev, { player: playerName, score: guessCount }];
-      }
-
-      return next.slice(0, 5);
+    await fetch('/api/score', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newScore),
     });
 
-    if (userName === playerName) {
+    if (playerName === userName) {
       setRecentScore({player: playerName, score: guessCount});
     }
   }

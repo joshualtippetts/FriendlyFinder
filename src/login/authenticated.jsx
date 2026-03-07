@@ -12,8 +12,16 @@ export function Authenticated(props) {
     /*----------------- Functions -------------------*/
 
   function logout() {
-    localStorage.removeItem('userName');
-    props.onLogout();
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        setDisplayError('Logout failed. Please try again.');
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        props.onLogout();
+      });
   }
 
   /*--------- Return the authenticated view ---------*/

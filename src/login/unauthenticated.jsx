@@ -12,17 +12,31 @@ export function Unauthenticated(props) {
 
   /*----------------- Functions -------------------*/
   async function loginUser() {
-    const userNames = JSON.parse(localStorage.getItem('userNames') || '[]');
-    if (userNames.includes(userName)) {
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email: userName, password: password }),
+    });
+
+    if (response.status === 200) {
       props.onLogin(userName);
     } else {
-      setDisplayError('User does not exist');
+      setDisplayError('Login failed');
     }
   }
 
   async function createUser() {
-    localStorage.setItem('userName', userName);
-    props.onLogin(userName);
+      const response = await fetch('/api/auth/create', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email: userName, password: password }),
+    });
+
+    if (response.status === 200) {
+      props.onLogin(userName);
+    } else {
+      setDisplayError('User already exists');
+    }
   }
 
   /*--------- Return the unauthenticated view ---------*/
