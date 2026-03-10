@@ -6,27 +6,20 @@ const app = express();
 
 const authCookieName = 'token';
 
-// The scores and users are saved in memory and disappear whenever the service is restarted.
 let users = [];
 let scores = [];
 
-// The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
-// JSON body parsing using built-in middleware
 app.use(express.json());
 
-// Use the cookie parser middleware for tracking authentication tokens
 app.use(cookieParser());
 
-// Serve up the front-end static content hosting
 app.use(express.static('public'));
 
-// Router for service endpoints
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
   if (await findUser('email', req.body.email)) {
     res.status(409).send({ msg: 'Existing user' });
@@ -38,7 +31,6 @@ apiRouter.post('/auth/create', async (req, res) => {
   }
 });
 
-// GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await findUser('email', req.body.email);
   if (user) {
@@ -52,7 +44,6 @@ apiRouter.post('/auth/login', async (req, res) => {
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
-// DeleteAuth logout a user
 apiRouter.delete('/auth/logout', async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
@@ -62,7 +53,6 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   res.status(204).end();
 });
 
-// Middleware to verify that the user is authorized to call an endpoint
 const verifyAuth = async (req, res, next) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
@@ -72,36 +62,29 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-// GetScores
 apiRouter.get('/scores', verifyAuth, (_req, res) => {
   res.send(scores);
 });
 
-// SubmitScore
 apiRouter.post('/score', verifyAuth, (req, res) => {
   scores = updateScores(req.body);
   res.send(scores);
 });
 
-// Default error handler
 app.use(function (err, req, res, next) {
   res.status(500).send({ type: err.name, message: err.message });
 });
 
-// Return the application's default page if the path is unknown
 app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-// updateScores considers a new score for inclusion in the high scores and updates if same players get better daily scores.
 function updateScores(newScore) {
 
-  // Remove worse score from same player
   scores = scores.filter(
     (s) => !(s.player === newScore.player && s.score > newScore.score)
   );
 
-  // Insert in sorted position
   let inserted = false;
 
   for (let i = 0; i < scores.length; i++) {
@@ -142,7 +125,6 @@ async function findUser(field, value) {
   return users.find((u) => u[field] === value);
 }
 
-// setAuthCookie in the HTTP response
 function setAuthCookie(res, authToken) {
   res.cookie(authCookieName, authToken, {
     maxAge: 1000 * 60 * 60 * 24 * 365,
@@ -152,11 +134,12 @@ function setAuthCookie(res, authToken) {
   });
 }
 
+/*---------Midnight reset of scores---------*/
 function scheduleMidnightReset() {
   const now = new Date();
 
   const midnight = new Date();
-  midnight.setHours(24, 0, 0, 0); // next midnight
+  midnight.setHours(24, 0, 0, 0); 
 
   const timeUntilMidnight = midnight - now;
 
@@ -164,7 +147,6 @@ function scheduleMidnightReset() {
     scores = [];
     console.log("Scores reset at midnight");
 
-    // After the first reset, repeat every 24 hours
     setInterval(() => {
       scores = [];
       console.log("Scores reset at midnight");
