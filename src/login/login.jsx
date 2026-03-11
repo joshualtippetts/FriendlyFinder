@@ -13,8 +13,16 @@ export function Login({ userName, authState, onAuthChange }) {
 
   /*----------------- Functions -------------------*/
     React.useEffect(() => {
-      setQuote('Quit, don\'t quit. Noodles, don\'t noodles.');
-      setQuoteAuthor('Oogway');
+      fetch('https://quote.cs260.click')
+      .then((response) => response.json())
+      .then((data) => {
+        setQuote(data.quote);
+        setQuoteAuthor(data.author);
+      })
+      .catch((error) => {
+        setQuote('Noodles. Don\'t noodles. Quit. Don\'t quit.');
+        setQuoteAuthor('');
+      });
     }, []);
 
     /*--------- Return the login view ---------*/
