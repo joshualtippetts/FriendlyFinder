@@ -78,3 +78,7 @@ const [scores, setScores] = React.useState([
     ]);
 const [recentScore, setRecentScore] = React.useState(null);
 ```
+
+## Service
+
+Mostly just replaced different elements that I already mocked up with service calls and it honestly made it a lot easier to store and sort through. The communication through the backend and frontend was a little wacky at some times but overall it worked. At least from what I could tell.

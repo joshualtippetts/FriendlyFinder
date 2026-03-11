@@ -105,12 +105,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - Indeed uses express. I find files and to create, login, and store (ish, just posts) users. Pathfind to different routes. Listen for requests, etc.
+- [x] **Static middleware for frontend** - "express.static('public')" make it so my files get served on the frontend.
+- [x] **Calls to third party endpoints** - Call to a quote website (I swear I tried different one but they kept on crashing).
+- [x] **Backend service endpoints** - Holds many paths that allow things like user storage, authentication, stores scores, etc.
+- [x] **Frontend calls service endpoints** - Use both get and post requests to collect the scores and user login information.
+- [x] **Supports registration, login, logout, and restricted endpoint** - I do have all of those endpoints and the restricted endpoints are the navigation to pages based on user authentication.
 
 ## 🚀 DB deliverable
 
