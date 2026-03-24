@@ -82,3 +82,6 @@ const [recentScore, setRecentScore] = React.useState(null);
 ## Service
 
 Mostly just replaced different elements that I already mocked up with service calls and it honestly made it a lot easier to store and sort through. The communication through the backend and frontend was a little wacky at some times but overall it worked. At least from what I could tell.
+
+## Database
+Honestly it's pretty cool that you can store the info in a different place to prevent data loss if the server crashes. It was a little harder than expected to connect everything up but it should be working now!
