@@ -21,7 +21,7 @@ export function Login({ userName, authState, onAuthChange }) {
       })
       .catch((error) => {
         setQuote('Noodles. Don\'t noodles. Quit. Don\'t quit.');
-        setQuoteAuthor('');
+        setQuoteAuthor('Oogway');
       });
     }, []);
 

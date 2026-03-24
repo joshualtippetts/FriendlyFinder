@@ -56,9 +56,9 @@ export default function App() {
                 userName={userName}
                 authState={authState}
                 onAuthChange={(userName, authState) => {
-                setAuthState(authState);
-                setUserName(userName);
-                  }}
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}
               />
             }
           />

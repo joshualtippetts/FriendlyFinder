@@ -90,7 +90,7 @@ export function Play({ userName, setRecentScore }) {
 
     await fetch('/api/score', {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json; charset=UTF-8' },
       body: JSON.stringify(newScore),
     });
 

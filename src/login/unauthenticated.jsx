@@ -28,7 +28,7 @@ export function Unauthenticated(props) {
   async function createUser() {
       const response = await fetch('/api/auth/create', {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json; charset=UTF-8'},
       body: JSON.stringify({ email: userName, password: password }),
     });
 
