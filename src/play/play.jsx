@@ -16,20 +16,7 @@ export function Play({ userName, setRecentScore }) {
   const [complete, setComplete] = useState(false);
   const [loading, setLoading] = useState(true);
   const [answerFormat, setAnswerFormat] = useState("subtitle");
-
   /*----------------- Functions & Mechanics -------------------*/
-
-  //Simulate other players playing and adding scores to the leaderboard
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const score = Math.floor(Math.random() * 6) + 1;
-      const player = 'Oogway';
-      addScore(player, score);
-    }, 500000);
-
-    return () => clearInterval(interval);
-  }, []);
-
 
   useEffect(() => {
     fetch("/words.txt")
@@ -85,18 +72,15 @@ export function Play({ userName, setRecentScore }) {
     setCurrentGuess("");
   }
 
-  async function addScore( playerName, guessCount) {
-    const newScore = { player: playerName, score: guessCount };
+  async function addScore( userName, guessCount) {
+    const newScore = { username: userName, score: guessCount };
 
     await fetch('/api/score', {
       method: 'POST',
       headers: { 'content-type': 'application/json; charset=UTF-8' },
       body: JSON.stringify(newScore),
     });
-
-    if (playerName === userName) {
-      setRecentScore({player: playerName, score: guessCount});
-    }
+    setRecentScore({username: userName, score: guessCount});
   }
 
   /*--------- Return the play view ---------*/

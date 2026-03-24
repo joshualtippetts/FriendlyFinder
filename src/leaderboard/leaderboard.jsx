@@ -39,9 +39,9 @@ export function Leaderboard({ recentScore }) {
         <tbody>
           {topScores.length ? (
             topScores.map((score, i) => (
-              <tr key={score.id ?? `${score.player}-${i}`}>
+              <tr key={score.id ?? `${score.username}-${i}`}>
                 <td className="table-placement">{i + 1}</td>
-                <td className="table-player">{score.player}</td>
+                <td className="table-player">{score.username}</td>
                 <td className="table-tries">{score.score}</td>
               </tr>
             ))
@@ -66,7 +66,7 @@ export function Leaderboard({ recentScore }) {
           {recentScore ? (
             <tr key="recent">
               <td className="table-placement">Recent</td>
-              <td className="table-player">{recentScore.player}</td>
+              <td className="table-player">{recentScore.username}</td>
               <td className="table-tries">{recentScore.score}</td>
             </tr>
           ) : (

@@ -20,8 +20,8 @@ const scoreCollection = db.collection('score');
   }
 })();
 
-function getUser(email) {
-  return userCollection.findOne({ email: email });
+function getUser(userName) {
+  return userCollection.findOne({ username: userName });
 }
 
 function getUserByToken(token) {
@@ -33,11 +33,11 @@ async function addUser(user) {
 }
 
 async function updateUser(user) {
-  await userCollection.updateOne({ email: user.email }, { $set: user });
+  await userCollection.updateOne({ username: user.username }, { $set: user });
 }
 
 async function updateUserRemoveAuth(user) {
-  await userCollection.updateOne({ email: user.email }, { $unset: { token: 1 } });
+  await userCollection.updateOne({ username: user.username }, { $unset: { token: 1 } });
 }
 
 async function addScore(score) {
@@ -52,7 +52,7 @@ function getHighScores() {
   const query = { score: { $gt: 0, $lt: 900 } };
   const options = {
     sort: { score: -1 },
-    limit: 10,
+    limit: 5,
   };
   const cursor = scoreCollection.find(query, options);
   return cursor.toArray();

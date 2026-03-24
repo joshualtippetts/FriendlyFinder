@@ -15,7 +15,7 @@ export function Unauthenticated(props) {
     const response = await fetch('/api/auth/login', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ email: userName, password: password }),
+      body: JSON.stringify({ username: userName, password: password }),
     });
 
     if (response.status === 200) {
@@ -29,7 +29,7 @@ export function Unauthenticated(props) {
       const response = await fetch('/api/auth/create', {
       method: 'POST',
       headers: { 'content-type': 'application/json; charset=UTF-8'},
-      body: JSON.stringify({ email: userName, password: password }),
+      body: JSON.stringify({ username: userName, password: password }),
     });
 
     if (response.status === 200) {
