@@ -85,3 +85,6 @@ Mostly just replaced different elements that I already mocked up with service ca
 
 ## Database
 Honestly it's pretty cool that you can store the info in a different place to prevent data loss if the server crashes. It was a little harder than expected to connect everything up but it should be working now!
+
+## WebSocket
+I took a different approach this time and spent more time studying websocket and what it could do rather than trial-and-error to figure it out. It ended up saving me a lot of time in the long run and it seems to be working pretty well. Funnily enough I already had a pretty decent mock-up of this so it was fairly easy adding it in and replacing all the things with connections and servers. The worst part about it was adapting the messaging system so that I could use it to update score. there is probably a better way to do that, but it worked in the end!
