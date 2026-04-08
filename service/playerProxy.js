@@ -1,17 +1,33 @@
 const { WebSocketServer, WebSocket } = require('ws');
 
-function playerProxy(httpServer) {
+function playerProxy(httpServer, setBroadcastFn) {
   const socketServer = new WebSocketServer({ server: httpServer });
+
+  // Broadcast function for use in Express
+  function broadcastToAll(msgObj) {
+    const msg = JSON.stringify(msgObj);
+    socketServer.clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(msg);
+      }
+    });
+  }
+  if (setBroadcastFn) setBroadcastFn(broadcastToAll);
 
   socketServer.on('connection', (socket) => {
     socket.isAlive = true;
 
-    socket.on('score', function update_scores(data) {
-      socketServer.clients.forEach((client) => {
-        if (client !== socket && client.readyState === WebSocket.OPEN) {
-          client.send(data);
-        }
-      });
+    socket.on('message', (data) => {
+      let msg;
+      try {
+        msg = JSON.parse(data);
+      } catch (e) {
+        return;
+      }
+      // If a client sends a score, you could handle it here if needed
+      if (msg.type === 'score') {
+        broadcastToAll({ type: 'leaderboard', scores: msg.scores });
+      }
     });
 
     socket.on('pong', () => {
