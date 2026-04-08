@@ -26,7 +26,7 @@ export function Leaderboard({ recentScore }) {
       const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
       const wsUrl = `${protocol}://${window.location.hostname}:4000`;
       ws = new window.WebSocket(wsUrl);
-      
+
       ws.onmessage = (event) => {
         try {
           const msg = JSON.parse(event.data);
@@ -45,10 +45,10 @@ export function Leaderboard({ recentScore }) {
 
     loadScores();
     connectWebSocket();
-    const interval = setInterval(loadScores, 10000);
+    // const interval = setInterval(loadScores, 10000);
 
     return () => {
-      clearInterval(interval);
+      // clearInterval(interval);
       if (ws) ws.close();
       if (reconnectTimeout) clearTimeout(reconnectTimeout);
     };
