@@ -45,10 +45,8 @@ export function Leaderboard({ recentScore }) {
 
     loadScores();
     connectWebSocket();
-    // const interval = setInterval(loadScores, 10000);
 
     return () => {
-      // clearInterval(interval);
       if (ws) ws.close();
       if (reconnectTimeout) clearTimeout(reconnectTimeout);
     };
