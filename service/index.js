@@ -15,6 +15,7 @@ app.use(express.json());
 
 app.use(cookieParser());
 
+
 app.use(express.static('public'));
 
 var apiRouter = express.Router();
@@ -71,6 +72,10 @@ apiRouter.get('/scores', verifyAuth, async (_req, res) => {
 apiRouter.post('/score', verifyAuth, async (req, res) => {
   const scores = await updateScores(req.body);
   res.send(scores);
+  // Broadcast updated leaderboard to all WebSocket clients via playerProxy
+  if (global.playerProxyBroadcast) {
+    global.playerProxyBroadcast({ type: 'leaderboard', scores });
+  }
 });
 
 app.use(function (err, req, res, next) {
@@ -139,8 +144,15 @@ function scheduleMidnightReset() {
 }
 scheduleMidnightReset();
 
-app.listen(port, () => {
+
+const server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
+});
+
+// Attach playerProxy to the HTTP server and expose a broadcast function
+global.playerProxyBroadcast = null;
+playerProxy(server, (broadcastFn) => {
+  global.playerProxyBroadcast = broadcastFn;
 });
 
 playerProxy(httpService);
