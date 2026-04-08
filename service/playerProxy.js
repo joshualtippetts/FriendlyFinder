@@ -3,7 +3,6 @@ const { WebSocketServer, WebSocket } = require('ws');
 function playerProxy(httpServer, setBroadcastFn) {
   const socketServer = new WebSocketServer({ server: httpServer });
 
-  // Broadcast function for use in Express
   function broadcastToAll(msgObj) {
     const msg = JSON.stringify(msgObj);
     socketServer.clients.forEach((client) => {
@@ -24,7 +23,6 @@ function playerProxy(httpServer, setBroadcastFn) {
       } catch (e) {
         return;
       }
-      // If a client sends a score, you could handle it here if needed
       if (msg.type === 'score') {
         broadcastToAll({ type: 'leaderboard', scores: msg.scores });
       }

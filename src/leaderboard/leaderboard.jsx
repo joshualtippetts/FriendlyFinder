@@ -13,16 +13,45 @@ export function Leaderboard({ recentScore }) {
     /*--------- Return the leaderboard table ---------*/
 
   React.useEffect(() => {
+    let ws;
+    let reconnectTimeout;
+
     const loadScores = () => {
-        fetch('/api/scores')
+      fetch('/api/scores')
         .then(res => res.json())
         .then(data => setScores(data));
     };
 
+    function connectWebSocket() {
+      const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+      const wsUrl = `${protocol}://${window.location.hostname}:4000`;
+      ws = new window.WebSocket(wsUrl);
+      
+      ws.onmessage = (event) => {
+        try {
+          const msg = JSON.parse(event.data);
+          if (msg.type === 'leaderboard' && Array.isArray(msg.scores)) {
+            setScores(msg.scores);
+          }
+        } catch (e) {}
+      };
+      ws.onerror = () => {
+        ws.close();
+      };
+      ws.onclose = () => {
+        reconnectTimeout = setTimeout(connectWebSocket, 3000);
+      };
+    }
+
     loadScores();
+    connectWebSocket();
     const interval = setInterval(loadScores, 10000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      if (ws) ws.close();
+      if (reconnectTimeout) clearTimeout(reconnectTimeout);
+    };
   }, []);
 
   return (
