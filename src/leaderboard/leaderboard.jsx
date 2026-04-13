@@ -6,9 +6,7 @@ export function Leaderboard({ recentScore }) {
 
     /*------------------ Variables --------------------*/
   const [scores, setScores] = React.useState([]);
-  const topScores = [...scores]
-    .sort((a, b) => a.score - b.score)
-    .slice(0, 5);
+  const topScores = scores;
 
     /*--------- Return the leaderboard table ---------*/
 

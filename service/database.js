@@ -51,7 +51,7 @@ async function resetHighScores() {
 function getHighScores() {
   const query = { score: { $gt: 0, $lt: 900 } };
   const options = {
-    sort: { score: -1 },
+    sort: { score: 1 },
     limit: 5,
   };
   const cursor = scoreCollection.find(query, options);
