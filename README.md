@@ -123,8 +123,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - playerProxy.js calls and creates the websocket server and listens for connections.
+- [x] **Frontend makes WebSocket connection** - My leaderboard.jsx file creates a websocket connection.
+- [x] **Data sent over WebSocket connection** - Using messages I update leaderboard scores across all clients.
+- [x] **WebSocket data displayed** - The leaderboard gets updated in real-time. As tested by my incognito mode.
+- [x] **Application is fully functional** - Fully functional with no mock-ups!
