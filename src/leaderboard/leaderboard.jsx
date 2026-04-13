@@ -22,7 +22,7 @@ export function Leaderboard({ recentScore }) {
 
     function connectWebSocket() {
       const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-      const wsUrl = `${protocol}://${window.location.hostname}:4000`;
+      const wsUrl = `${protocol}://${window.location.hostname}`;
       ws = new window.WebSocket(wsUrl);
 
       ws.onmessage = (event) => {

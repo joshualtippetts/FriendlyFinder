@@ -63,12 +63,14 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-apiRouter.get('/scores', verifyAuth, async (_req, res) => {
+
+apiRouter.get('/scores', async (_req, res) => {
   const scores = await DB.getHighScores();
   res.send(scores);
 });
 
-apiRouter.post('/score', verifyAuth, async (req, res) => {
+
+apiRouter.post('/score', async (req, res) => {
   const scores = await updateScores(req.body);
   res.send(scores);
   if (global.playerProxyBroadcast) {
